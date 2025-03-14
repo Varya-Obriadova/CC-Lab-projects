@@ -1,7 +1,10 @@
 let dogX;
 let dogY = 360;
+
 let catX;
 let catY = 63;
+let catDirection = 1
+
 let mouX;
 let mouY = 300
 let catIsVisible = true;
@@ -11,12 +14,15 @@ let randomNum
 let transparency = 0
 let circleStart = 1
 let offset = 5
+let traspInc = 1
 
 function setup() {
-  let canvas = createCanvas(800, 500);
-  canvas.id ("p5-canvas")
-  canvas.parent ("p5-canvas-container")
-
+  
+  //let canvas = createCanvas(800, 500);
+  //canvas.id ("p5-canvas")
+  //canvas.parent ("p5-canvas-container")
+  
+  createCanvas(800, 500);
   dogX = random(129, 452);
   catX = random(50, 450);
   mouX = random (40, 150)
@@ -38,12 +44,20 @@ function draw() {
         
   drawBackground();
   
-  
 
   
   
   if (catIsVisible) {
     drawCat(catX, catY);
+    if (catX >= 800 && catX <= 0 ){
+      
+      catX += 1 } else {
+        catX 
+        
+        
+      
+    }
+    
     
   }
   
@@ -59,7 +73,7 @@ function draw() {
   if (catIsVisible == false){
     for (let x = circleStart; x < 802; x += 10){
       for (let y = 1; y < 502; y +=10){
-        fill (random (0, 50), transparency)
+        fill (random (0, 30), transparency)
         circle (x, y, 10)
       }
     }
@@ -73,7 +87,7 @@ function draw() {
   if (dogIsVisible == false){
     for (let x = circleStart; x < 802; x += 10){
       for (let y = 1; y < 502; y +=10){
-        fill (random (0, 50), transparency)
+        fill (random (0, 30), transparency)
         circle (x, y, 10)
       }
     }
@@ -82,13 +96,17 @@ function draw() {
   if (mouseIsVisible == false){
     for (let x = circleStart; x < 802; x += 10){
       for (let y = 1; y < 502; y +=10){
-        fill (random (0, 50), transparency)
+        fill (random (0, 30), transparency)
         circle (x, y, 10)
       }
     }
   }
   
-  transparency += 1
+  transparency += traspInc
+  if (transparency > 200 || transparency < 0){
+    traspInc = -traspInc
+  }
+
   circleStart += offset
   offset = - offset
   
@@ -212,6 +230,12 @@ function drawCat(x, y) {
   push();
   translate(x, y);
   
+  // // find out which drirecrtion i moves
+  // if(....movs right:.){
+  //   scale(-1, 1) // cat looks to the right
+  // }
+  
+  
   fill(0);
   circle(-20, -20, 30); // head
   ellipse(0, 0, 60, 40); // body
@@ -223,18 +247,25 @@ function drawCat(x, y) {
   circle (-22, -25, 3)
   fill ("#DC143C")
   circle (-30, -20, 4)
-  pop()
-
+  
   push();
-  translate(x, y - sin(radians(frameCount + 0) * 10) * 5);
+  translate(5, 0 - sin(radians(frameCount + 0) * 10) * 5);
   fill(0);
   // moving tail
   for (let i = 0; i < 30; i++) {
-    let x = i;
-    let y = sin(radians(frameCount + i) * 10) * 5;
-    circle(x + 25, y, 11);
+    let xtail = i;
+    let ytail = sin(radians(frameCount + i) * 10) * 5;
+    circle(xtail + 25, ytail, 11);
   }
   pop();
+  
+  fill("red");
+  circle(0, 0, 5)
+  pop()
+  
+  
+
+  
 }
 
 function drawDog(x, y) {
@@ -294,6 +325,13 @@ function drawDog(x, y) {
   // Tail
   strokeWeight(5);
   arc(60, 40, 50, 50 + sin(frameCount * 0.5) * 4, -PI / 2, PI);
+  
+  
+  // helper function
+  noFill();
+  stroke("red");
+  rect(0,0, 120, 90) //detection of click area
+  circle(0,0, 5) // center
   pop();
 }
 
