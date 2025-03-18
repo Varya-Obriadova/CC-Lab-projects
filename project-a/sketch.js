@@ -25,11 +25,10 @@ let traspInc = 1;
 let speedTr = 0.5;
 
 function setup() {
-  //let canvas = createCanvas(800, 500);
-  //canvas.id ("p5-canvas")
-  //canvas.parent ("p5-canvas-container")
-
-  createCanvas(800, 500);
+  let canvas = createCanvas(800, 500);
+  canvas.id ("p5-canvas")
+  canvas.parent ("p5-canvas-container")
+  
   dogX = random(129, 452);
   catX = random(50, 450);
   mouX = random(40, 150);
