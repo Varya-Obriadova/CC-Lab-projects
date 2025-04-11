@@ -5,7 +5,7 @@ let max_of_arcs = 500; // Decide the maximum number of particles.
 
 let rainbows = [];
 let colors = ["red", "orange", "yellow", "green", "blue", "#00008B", "purple"];
-let delay = 20;
+
 
 
 function setup() {
@@ -50,23 +50,25 @@ class Rainbow {
       this.growth.push(0);
     }
     this.startFrame = frameCount;
+    this.delay = random (1,300)
   }
   // methods (functions): particle's behaviors
   update() {
     let elapsed = frameCount - this.startFrame;
+    
 
     for (let i = 0; i < 7; i++) {
-      if (elapsed > i * delay && this.growth[i] < 180) {
+      if (elapsed > i * this.delay && this.growth[i] < 180) {
         this.growth[i] += 3;
-        if (this.growth[i] > 180) {
+      }
+      if (this.growth[i] >= 180) {
           this.growth[i] = 180;
         }
           
       }
     }
-  }
-    
   
+    
   display() {
     // particle's appearance
     push();
