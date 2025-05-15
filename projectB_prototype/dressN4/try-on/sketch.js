@@ -19,7 +19,12 @@ function setup() {
 
 function draw() {
   if (isCaptureReady) {
-    image(capture, windowWidth/2, 0, windowWidth/4, windowHeight/4);
+    push();
+    translate((windowWidth/3 + windowWidth/3) + windowWidth/4, 0); // move origin to right edge of the image
+    scale(-1, 1); // mirror horizontally
+    image(capture, 0, windowHeight/4, windowWidth/4, windowHeight/4);
+    pop();
+   
     image(room, 0, 0, windowWidth, windowHeight);
   }
 }
