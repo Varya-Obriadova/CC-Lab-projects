@@ -1,0 +1,33 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: block;
+}
+
+.collapsible-title {
+  background: white;
+  border: solid 1px black;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.collapsible-title:hover {
+  background: lightgray;
+}
+
+.collapsible-content {
+  overflow: hidden;
+  height: 0px;
+  transition: .2s ease;
+}
+
+.expanded {
+  box-sizing: border-box;
+  border: solid 1px black;
+  padding: 10px;
+  transition: height .2s ease;
+}
