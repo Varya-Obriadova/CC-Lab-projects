@@ -208,18 +208,17 @@ function mousePressed() {
 
   if (gallery_room_number > 1 && gallery_room_number < rooms - 1){
 
-      // Check if mouse is over the "Know more" button area
     if (
       mouseX > 0 &&
       mouseX < windowWidth / 2 &&
       mouseY > windowHeight / 8 &&
       mouseY < windowHeight / 8 + windowHeight / 7
     ) {
-      // Check if it's in the left area = "Know more"
+
       if (mouseX < windowWidth / 2 / 2) {
         knowMore();
       }
-      // Else it's in the right half = "Try it on!"
+
       else {
         tryOn();
 

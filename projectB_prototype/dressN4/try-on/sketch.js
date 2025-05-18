@@ -11,7 +11,7 @@ function setup() {
   canvas.parent("p5-canvas-container");
 
   capture = createCapture(VIDEO, () => {
-    isCaptureReady = true; // ✅ set when webcam is ready
+    isCaptureReady = true; 
   });
   
   capture.hide(); 
@@ -20,7 +20,7 @@ function setup() {
 function draw() {
   if (isCaptureReady) {
     push();
-    translate((windowWidth/3 + windowWidth/3) + windowWidth/4, 0); // move origin to right edge of the image
+    translate((windowWidth/3 + windowWidth/3) + windowWidth/4, 0); 
     scale(-1, 1); // mirror horizontally
     image(capture, 0, windowHeight/4, windowWidth/4, windowHeight/4);
     pop();

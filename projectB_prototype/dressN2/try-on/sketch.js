@@ -11,7 +11,7 @@ function setup() {
   canvas.parent("p5-canvas-container");
 
   capture = createCapture(VIDEO, () => {
-    isCaptureReady = true; // ✅ set when webcam is ready
+    isCaptureReady = true; 
   });
   
   capture.hide(); 
