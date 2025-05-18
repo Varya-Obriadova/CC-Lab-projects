@@ -6,15 +6,17 @@ function preload (){
   room = loadImage("assets/galleryR3_holes.png");
 }
 
+function setCaptureReady() {
+  isCaptureReady = true;
+}
+
 function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent("p5-canvas-container");
 
-  capture = createCapture(VIDEO, () => {
-    isCaptureReady = true; 
-  });
-  
-  capture.hide(); 
+  capture = createCapture(VIDEO, setCaptureReady); 
+
+  capture.hide();
 }
 
 function draw() {
